@@ -21,8 +21,14 @@ link techniques: https://docs.nestjs.com/techniques/mongodb
 npm install --save-exact @nest/mongoose@10.0.10 mongoose@8.5.1
 ```
 - install nestjs/config
+https://docs.nestjs.com/techniques/configuration
 ```
 npm install --save-exact @nest/config@3.2.3
+```
+- install class-validator
+https://docs.nestjs.com/techniques/validation
+```
+npm install --save-exact class-validator@0.14.1 class-transformer@0.5.1
 ```
 - install/update package
 ```
