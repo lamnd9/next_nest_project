@@ -11,13 +11,39 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const mongoose_1 = require("@nestjs/mongoose");
+const config_1 = require("@nestjs/config");
+const users_module_1 = require("./modules/users/users.module");
+const reviews_module_1 = require("./modules/reviews/reviews.module");
+const likes_module_1 = require("./modules/likes/likes.module");
+const orders_module_1 = require("./modules/orders/orders.module");
+const menu_items_module_1 = require("./modules/menu.items/menu.items.module");
+const menu_item_options_module_1 = require("./modules/menu.item.options/menu.item.options.module");
+const order_detail_module_1 = require("./modules/order.detail/order.detail.module");
+const restaurants_module_1 = require("./modules/restaurants/restaurants.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://admin:password123@localhost:27017/next-nest-app?authSource=admin'),
+            users_module_1.UsersModule,
+            likes_module_1.LikesModule,
+            menu_item_options_module_1.MenuItemOptionsModule,
+            menu_items_module_1.MenuItemsModule,
+            order_detail_module_1.OrderDetailModule,
+            orders_module_1.OrdersModule,
+            restaurants_module_1.RestaurantsModule,
+            reviews_module_1.ReviewsModule,
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+            }),
+            mongoose_1.MongooseModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                useFactory: async (configService) => ({
+                    uri: configService.get('MONGODB_URI'),
+                }),
+                inject: [config_1.ConfigService],
+            })
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
