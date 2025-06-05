@@ -30,6 +30,13 @@ https://docs.nestjs.com/techniques/validation
 ```
 npm install --save-exact class-validator@0.14.1 class-transformer@0.5.1
 ```
+- install hash password
+https://www.npmjs.com/package/bcrypt?activeTab=readme
+```
+% npm i -save-exact bcrypt@5.1.1
+% npm i --save-dev @types/bcrypt
+% npm i --save-exact api-query-params@5.4.0
+```
 - install/update package
 ```
 npm install
